@@ -13,23 +13,23 @@ to
 
 static char words[MAXWORDS][MAXWORDLEN];
 
-Since in our test files "*" occurred as single "word" we changed the wildcard symbol to "<*":
+Since in our test files "\asterisk" occurred as single "word" we changed the wildcard symbol to "<\asterisk":
 
 -) In line 1204
 
-printf("%s*%s ", buffer, ptr2->word + ptr2->tail);
+printf("%s\asterisk%s ", buffer, ptr2->word + ptr2->tail);
 
 has to be changed to
 
-printf("%s<*%s ", buffer, ptr2->word + ptr2->tail);
+printf("%s<\asterisk%s ", buffer, ptr2->word + ptr2->tail);
 
 -) In line 1209
 
-} else { printf("* "); }
+} else { printf("\asterisk "); }
 
 has to be changed to
 
-} else { printf("<* "); }
+} else { printf("<\asterisk "); }
 
 Make sure that the compiled executeable is named slct.exe
 
