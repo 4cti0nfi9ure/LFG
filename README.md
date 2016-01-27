@@ -13,38 +13,40 @@ to
 
 static char words[MAXWORDS][MAXWORDLEN];
 
-Since in our test files "\asterisk" occurred as single "word" we changed the wildcard symbol to "<\asterisk":
+Since in our test files "\*" occurred as single "word" we changed the wildcard symbol to "<\*":
 
 -) In line 1204
 
-printf("%s\asterisk%s ", buffer, ptr2->word + ptr2->tail);
+printf("%s\*%s ", buffer, ptr2->word + ptr2->tail);
 
 has to be changed to
 
-printf("%s<\asterisk%s ", buffer, ptr2->word + ptr2->tail);
+printf("%s<\*%s ", buffer, ptr2->word + ptr2->tail);
 
 -) In line 1209
 
-} else { printf("\asterisk "); }
+} else { printf("\* "); }
 
 has to be changed to
 
-} else { printf("<\asterisk "); }
+} else { printf("<\* "); }
 
 Make sure that the compiled executeable is named slct.exe
 
 The actual LFG prototype was only tested on windows 7. Since SLCT is executed via command line in case of using a different OS a change in LogLineClustering.java in line number 53 might be required.
 
-Main functionalities:
+For further information about SLCT go to http://ristov.github.io/slct/.
 
-1) Calculating log line clusters applying SLCT
-2) Calculating clusterValue, which specifies the significance of the SLCT clusters
-3) Sorting log lines to the SLCT clusters
-4) Finding the most accurate cluster for each log line based on the clusterValue
-5) Calculate transition matrix
-6) Generate NESData using a markov chain approach
-7) Generate timestamps for the NESData
-8) Fill NESData with log line content
+Main functionalities of LFG:
+
+1. Calculating log line clusters applying SLCT
+2. Calculating clusterValue, which specifies the significance of the SLCT clusters
+3. Sorting log lines to the SLCT clusters
+4. Finding the most accurate cluster for each log line based on the clusterValue
+5. Calculate transition matrix
+6. Generate NESData using a markov chain approach
+7. Generate timestamps for the NESData
+8. Fill NESData with log line content
 
 Input arguments:
 
